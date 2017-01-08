@@ -14,7 +14,7 @@ class TodoItem extends React.Component {
   renderTodo() {
     let { text, id } = this.props;
     return (
-      <div>{id}. {text}</div>
+      <div className="todo-item">{id}. {text}</div>
     )
   }
 }

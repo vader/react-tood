@@ -5,3 +5,9 @@ var TestUtils = require('react-addons-test-utils');
 var $ = require('jQuery');
 
 var TodoItem = require('TodoItem');
+
+describe('TodoItem tests', () => {
+  it('it should exist', () => {
+    expect(TodoItem).toExist();
+  })
+});
