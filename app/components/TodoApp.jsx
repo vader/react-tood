@@ -1,10 +1,13 @@
 var React = require('react');
 var TodoList = require('TodoList');
 var TodoAddForm = require('TodoAddForm');
+let TodoSearch = require('TodoSearch');
 
 class TodoApp extends React.Component {
   constructor(props) {
     super(props);
+    this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
     this.state = {
       todo: [
         {
@@ -26,7 +29,9 @@ class TodoApp extends React.Component {
           id: 6,
           text: "Sail away after saying goodbye to this cruel world"
         },
-      ]
+      ],
+      showCompleted: false,
+      searchText: '',
     }
   }
 
@@ -34,10 +39,19 @@ class TodoApp extends React.Component {
     alert('Handled click in TodoApp: ' + text);
   }
 
+  handleSearch(showCompleted, text) {
+    console.log(`checkbox=${showCompleted} for text=${text}`);
+    this.setState({
+      showCompleted: showCompleted,
+      searchText: text.toLowerCase(),
+    });
+  }
+
   render() {
     let { todo } = this.state;
     return (
       <div>
+        <TodoSearch onSearch={this.handleSearch}/>
         <TodoList todoList={todo}/>
         <TodoAddForm onAddTodo={this.handleAddTodo}/>
       </div>
