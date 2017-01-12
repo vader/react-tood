@@ -3,25 +3,27 @@ var React = require('react');
 class TodoAddForm extends React.Component {
   constructor(props) {
     super(props);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
     let todo = this.refs.todoItem.value;
-    console.log(todo)
+    console.log(todo);
     if(todo && todo.length > 0) {
       this.props.onAddTodo(todo);
       this.refs.todoItem.value = '';
+    } else {
+      this.refs.todoItem.focus();
     }
   }
 
   render() {
     return (
       <div>
-        <form ref="form" onSubmit={this.onSubmit}>
+        <form ref="form" onSubmit={this.handleSubmit}>
           <input type="text" ref="todoItem" placeholder="Add todo item"/>
-          <button>Add</button>
+          <button className="hollow button expanded">Add Todo</button>
         </form>
       </div>
     )

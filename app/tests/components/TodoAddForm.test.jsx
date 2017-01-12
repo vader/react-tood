@@ -15,11 +15,11 @@ describe('TodoAddForm tests', () => {
     let spy = expect.createSpy();
     let todoForm = TestUtils.renderIntoDocument(<TodoAddForm onAddTodo={spy}/>);
     let $el = $(ReactDOM.findDOMNode(todoForm));
-
-    todoForm.refs.todoItem.value = 'todo';
+    let testValue = 'todo';
+    todoForm.refs.todoItem.value = testValue;
     let find = $el.find('form')[0];
     TestUtils.Simulate.submit(find);
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith(testValue);
   });
 
   it('should not add invalid values', () => {
