@@ -2,6 +2,7 @@ var React = require('react');
 var TodoList = require('TodoList');
 var TodoAddForm = require('TodoAddForm');
 let TodoSearch = require('TodoSearch');
+let uuid = require('node-uuid');
 
 class TodoApp extends React.Component {
   constructor(props) {
@@ -11,22 +12,22 @@ class TodoApp extends React.Component {
     this.state = {
       todo: [
         {
-          id: 1,
+          id: uuid(),
           text: "Walk the dog"
         }, {
-          id: 2,
+          id: uuid(),
           text: "Feed the cat"
         }, {
-          id: 3,
+          id: uuid(),
           text: "Fly the fish"
         }, {
-          id: 4,
+          id: uuid(),
           text: "Play with parrot"
         }, {
-          id: 5,
+          id: uuid(),
           text: "Swim with dolphin"
         }, {
-          id: 6,
+          id: uuid(),
           text: "Sail away after saying goodbye to this cruel world"
         },
       ],
@@ -35,8 +36,20 @@ class TodoApp extends React.Component {
     }
   }
 
+  uuid(){
+    return uuid.v4()
+  }
+
   handleAddTodo(text) {
-    alert('Handled click in TodoApp: ' + text);
+    this.setState({
+        todo: [...this.state.todo,
+          {
+            id: uuid(),
+            text: text
+          }
+        ]
+      }
+    );
   }
 
   handleSearch(showCompleted, text) {
