@@ -35,13 +35,8 @@ describe('TodoList tests', () => {
     expect(TodoList).toExist();
   });
 
-  it('should contain list items', () =>{
-     const TODO_LIST = TestUtils.renderIntoDocument(<TodoList todoList={TD}/>);
-     let $el = $(ReactDOM.findDOMNode(TODO_LIST));
-     let length = $el.find('.todo-item').length;
-     expect(length).toBe(6);
-  });
-  it('should contain all list todos', () =>{
+
+  it('should contain all list todos', () => {
     const TODO_LIST = TestUtils.renderIntoDocument(<TodoList todoList={TD}/>);
     let todoComponents = TestUtils.scryRenderedComponentsWithType(TODO_LIST, TodoItem);
     expect(todoComponents.length).toBe(6);

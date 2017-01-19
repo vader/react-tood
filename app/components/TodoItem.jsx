@@ -3,18 +3,30 @@ var React = require('react');
 class TodoItem extends React.Component {
   constructor(props) {
     super(props);
+    this.onClickHandler = this.onClickHandler.bind(this);
+  }
+
+  onClickHandler(){
+    console.log('clicked');
   }
 
   render() {
     return (
-      <div>{this.renderTodo()}</div>
-    )
+      this.renderTodo()
+      )
   }
 
   renderTodo() {
-    let { text, id } = this.props;
+    let { text, id, completed } = this.props;
     return (
-      <div className="todo-item">{id}. {text}</div>
+      <div onClick={() => {
+        console.log('On click id');
+        console.log(id);
+        this.props.onToggle(id);
+      }}>
+        <input type="checkbox" checked={completed}/>
+        {text}
+      </div>
     )
   }
 }
