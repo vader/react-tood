@@ -31,7 +31,6 @@ class TodoApp extends React.Component {
       }
       return todo;
     });
-    console.log(updatedTodos);
     this.setState({
       todo: updatedTodos
     })

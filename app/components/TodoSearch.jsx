@@ -22,8 +22,6 @@ class TodoSearch extends React.Component {
     let search = this.refs.searchText.value;
     let showCompleted = this.refs.showCompleted.checked;
     if (search !== 'undefined' && search) {
-      console.log(search);
-      console.log(showCompleted);
       this.props.onSearch(showCompleted, search);
     } else {
       this.refs.searchText.focus();

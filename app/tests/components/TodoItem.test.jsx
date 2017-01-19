@@ -25,7 +25,6 @@ describe('TodoItem tests', () => {
 
     let $el = $(ReactDOM.findDOMNode(todoItem));
     let find = $el[0];
-    console.log(find);
     TestUtils.Simulate.click(find);
 
     expect(spy).toHaveBeenCalledWith(10);

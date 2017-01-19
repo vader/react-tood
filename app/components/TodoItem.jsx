@@ -20,8 +20,6 @@ class TodoItem extends React.Component {
     let { text, id, completed } = this.props;
     return (
       <div onClick={() => {
-        console.log('On click id');
-        console.log(id);
         this.props.onToggle(id);
       }}>
         <input type="checkbox" checked={completed}/>

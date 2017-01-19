@@ -9,7 +9,6 @@ class TodoAddForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let todo = this.refs.todoItem.value;
-    console.log(todo);
     if(todo && todo.length > 0) {
       this.props.onAddTodo(todo);
       this.refs.todoItem.value = '';
