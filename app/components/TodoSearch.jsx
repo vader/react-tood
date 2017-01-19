@@ -21,11 +21,7 @@ class TodoSearch extends React.Component {
   handleSearch() {
     let search = this.refs.searchText.value;
     let showCompleted = this.refs.showCompleted.checked;
-    if (search !== 'undefined' && search) {
-      this.props.onSearch(showCompleted, search);
-    } else {
-      this.refs.searchText.focus();
-    }
+    this.props.onSearch(showCompleted, search);
   }
 
   render() {
@@ -37,7 +33,7 @@ class TodoSearch extends React.Component {
         </div>
         <div>
           <label>
-            <input type="checkbox" ref="showCompleted" 
+            <input type="checkbox" ref="showCompleted"
                    onChange={this.handleSearch}/>
             Show completed todos
           </label>
