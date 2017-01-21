@@ -60,5 +60,4 @@ describe('TodoApp tests', () => {
     expect(app.state.todo[0].completedAt).toBe(undefined);
 
   })
-
 });

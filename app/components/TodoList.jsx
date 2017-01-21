@@ -14,6 +14,11 @@ class TodoList extends React.Component {
 
   renderTodos() {
     let todoList = this.props.todoList;
+    if(todoList.length ===0 ){
+      return (
+        <p className="container__message">Nothing To Do</p>
+      );
+    }
     return todoList.map((todo) => {
       return <TodoItem onToggle={this.props.onToggle} key={todo.id} {...todo}/>
     });
