@@ -22,6 +22,7 @@ describe('TodoApp tests', () => {
 
     expect(app.state.todo.length).toBe(1);
     expect(app.state.todo[0].text).toBe(todoText);
+    expect(app.state.todo[0].createdAt).toBeA('number');
   });
 
   it('should handle toggle', function () {
@@ -33,12 +34,31 @@ describe('TodoApp tests', () => {
       text: todoText
     }];
 
-    let todoApp = TestUtils.renderIntoDocument(<TodoApp/>);
-    todoApp.setState({ todo: todoData });
-    expect(todoApp.state.todo[0].completed).toBe(false);
-    todoApp.handleToggle(10);
-    expect(todoApp.state.todo[0].completed).toBe(true);
+    let app = TestUtils.renderIntoDocument(<TodoApp/>);
+    app.setState({ todo: todoData });
+    expect(app.state.todo[0].completed).toBe(false);
+    app.handleToggle(10);
+    expect(app.state.todo[0].completed).toBe(true);
+    expect(app.state.todo[0].completedAt).toBeA('number');
+
   })
 
+  it('should toggle completed date', function () {
+    let todoText = 'Sleep for 8 hours';
+
+    let todoData = [{
+      id: 10,
+      completed: true,
+      text: todoText,
+      createdAt: 1484980720,
+      completedAt: 1484980720
+    }];
+
+    let app = TestUtils.renderIntoDocument(<TodoApp/>);
+    app.setState({ todo: todoData });
+    app.handleToggle(10);
+    expect(app.state.todo[0].completedAt).toBe(undefined);
+
+  })
 
 });

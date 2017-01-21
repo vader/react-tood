@@ -1,5 +1,6 @@
 var React = require('react');
 let uuid = require('node-uuid');
+let moment = require('moment');
 
 var TodoList = require('TodoList');
 var TodoAddForm = require('TodoAddForm');
@@ -28,6 +29,7 @@ class TodoApp extends React.Component {
     var updatedTodos = this.state.todo.map( (todo) => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
+        todo.completedAt = (todo.completed) ? moment().unix() : undefined;
       }
       return todo;
     });
@@ -43,11 +45,14 @@ class TodoApp extends React.Component {
 
   handleAddTodo(text) {
     this.setState({
-        todo: [...this.state.todo,
+        todo: [
+          ...this.state.todo,
           {
             id: uuid(),
             text: text,
-            completed: false
+            completed: false,
+            createdAt: moment().unix(),
+            completedAt: undefined,
           }
         ]
       }
