@@ -32,6 +32,11 @@ export let todosReducer = (state = [], action) => {
           completedAt: undefined,
         }
       ];
+    case 'ADD_TODOS':
+      return [
+        ...state,
+        ...action.todos
+      ];
     //Add case for TOGGLE_TODO match the item of the id of the array. Then set completed to opposite and updateCompletedAt
     case 'TOGGLE_TODO':
       return state.map( (todo) => {

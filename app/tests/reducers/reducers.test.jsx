@@ -61,4 +61,24 @@ describe('Reducers', () => {
 
   });
 
+  it('should add all todos', () => {
+    let todos = [{
+      id: '123',
+      text: 'Walk cats',
+      completed: false,
+      createdAt: 3000,
+      completedAt: undefined,
+    }];
+    let action = {
+      type : 'ADD_TODOS',
+      todos,
+    };
+    //
+    let res  = reducers.todosReducer(df([]), df(action));
+    expect(res.length).toEqual(1);
+    expect(res[0].id).toEqual('123');
+    expect(res[0]).toEqual(todos[0]);
+
+  })
+
 });
