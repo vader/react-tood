@@ -13,11 +13,6 @@ store.subscribe( () => {
   console.log('New state', store.getState());
 });
 
-store.dispatch(actions.addTodo('Buy the Tesla'));
-store.dispatch(actions.setSearchText('Tesla'));
-store.dispatch(actions.toggleShowCompleted());
-// Load foundation
-
 // Start foundation select document using jquery and call the foundation method
 $(document).foundation();
 
