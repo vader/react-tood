@@ -14,7 +14,7 @@ module.exports = {
 
   getTodos: function () {
     let stringTodos = localStorage.getItem(TODO_KEY);
-    let todos = []
+    let todos = [];
     try {
       todos = JSON.parse(stringTodos);
     } catch (e) {
@@ -25,9 +25,8 @@ module.exports = {
   },
 
   filterTodos: function (todos, showCompleted, searchText) {
-    let filteredTodos = todos;
     //Filter completed
-    filteredTodos = todos.filter((todo) => {
+    let filteredTodos = todos.filter((todo) => {
       return !todo.completed || showCompleted;
     });
 
