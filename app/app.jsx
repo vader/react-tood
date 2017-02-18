@@ -9,14 +9,7 @@ let actions = require('actions');
 let store = require('configureStore').configure();
 let TodoApi = require('TodoApi');
 
-store.subscribe( () => {
-  let state = store.getState();
-  console.log('New state', state);
-  TodoApi.setTodos(state.todos);
-});
-
-let initialTodos = TodoApi.getTodos();
-store.dispatch(actions.addTodos(initialTodos));
+store.dispatch(actions.startAddTodos());
 
 // Start foundation select document using jquery and call the foundation method
 $(document).foundation();
