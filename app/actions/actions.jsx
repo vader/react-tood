@@ -1,5 +1,7 @@
-import {firebaseRef} from 'app/firebase/';
+import {firebaseRef, githubProvider} from 'app/firebase/';
 import moment from 'moment';
+import firebase from 'firebase';
+
 
 export let setSearchText = (searchText) => {
   return {
@@ -74,7 +76,7 @@ export let startToggleTodo = (id, completed) => {
 
 export let startAddTodos = () => {
   console.log('Starting to fetch todos from firebase');
-  return (dispatch, getState ) => {
+  return (dispatch, getState) => {
     var todos = [];
     var todosRef = firebaseRef.child('todos');
     return todosRef.once('value').then((snapshot) => {
@@ -90,5 +92,26 @@ export let startAddTodos = () => {
     }, (e) => {
       console.log(e);
     });
+  };
+};
+
+export let startLogin = () => {
+  return (dispatch, getState) => {
+    return firebase.auth().signInWithPopup(githubProvider).then((result) => {
+      console.log('Auth successful', result);
+    }, (error) => {
+      console.log('Unable to authenticate', error);
+    })
+  }
+};
+
+export let startLogout = () => {
+  console.log('startLogout');
+  return (dispatch, getState) => {
+    console.log('startLogout dispatch');
+
+    return firebase.auth().signOut().then(() => {
+      console.log('Successfully logged out');
+    })
   };
 };
