@@ -11,7 +11,7 @@ var final = ['Ian'];
 
 
 function greeting(name, age) {
-  console.log(`Hi ${name}, you are ${age}`);
+  //console.log(`Hi ${name}, you are ${age}`);
 }
 
 greeting(...person);
@@ -19,7 +19,7 @@ greeting(...personTwo);
 
 function displayNames(names) {
   names.forEach( (e) => {
-    console.log(`Hi ${e} `)
+    //console.log(`Hi ${e} `)
   });
 }
 

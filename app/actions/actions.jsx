@@ -60,7 +60,7 @@ export let updateTodo = (id, updates) => {
 };
 
 export let startToggleTodo = (id, completed) => {
-  console.log('startToggleTodo');
+  //console.log('startToggleTodo');
   return (dispatch, getState) => {
     var todoRef = firebaseRef.child(`todos/${id}`);
     var updates = {
@@ -114,4 +114,19 @@ export let startLogout = () => {
       console.log('Successfully logged out');
     })
   };
+};
+
+export let login = (uuid) => {
+  console.log('login');
+  return {
+    type: 'LOGIN',
+    uuid
+  }
+};
+
+
+export let logout = () => {
+  return {
+    type: 'LOGOUT',
+  }
 };

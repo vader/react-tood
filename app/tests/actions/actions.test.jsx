@@ -135,7 +135,28 @@ describe('Actions', () => {
         done();
       }, done)
     });
+  });
 
+  describe('auth actions', () => {
+    it('should generate logout action', () => {
+      let action = {
+        type: 'LOGOUT'
+      };
 
-  })
+      let res = actions.logout();
+      expect(res).toEqual(action);
+    });
+  });
+
+  describe('auth actions', () => {
+    it('should generate login action', () => {
+      let action = {
+        type: 'LOGIN',
+        uuid: '123'
+      };
+
+      let res = actions.login(action.uuid);
+      expect(res).toEqual(action);
+    });
+  });
 });

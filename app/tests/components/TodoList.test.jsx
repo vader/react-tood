@@ -50,14 +50,4 @@ describe('TodoList tests', () => {
 
     expect(todoComponents.length).toBe(TD.length);
   });
-
-  // it('should render todo message', function () {
-  //   let todoData = [];
-  //   let todoList = TestUtils.renderIntoDocument(<TodoList todoList={todoData} />);
-  //   let $el = $(ReactDOM.findDOMNode(todoList));
-  //
-  //   expect($el.find('.container__message').length).toBe(1);
-  //
-  // })
-
 });

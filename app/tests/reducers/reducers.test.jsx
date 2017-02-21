@@ -89,6 +89,33 @@ describe('Reducers', () => {
     expect(res[0].id).toEqual('123');
     expect(res[0]).toEqual(todos[0]);
 
-  })
+  });
+
+  it('Should log out',  () => {
+    let auth = {
+      uuid: ''
+    };
+
+    let action = {
+      type: 'LOGOUT'
+    };
+
+    let res = reducers.authReducer(df(''), df(action));
+    expect(res).toEqual(auth);
+  });
+
+  it('Should log in',  () => {
+    let auth = {
+        uuid: '123'
+    };
+
+    let action = {
+      type: 'LOGIN',
+      uuid: '123'
+    };
+
+    let res = reducers.authReducer(df('123'), df(action));
+    expect(res).toEqual(auth);
+  });
 
 });
