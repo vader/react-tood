@@ -139,18 +139,16 @@ describe('Actions', () => {
 
   describe('auth actions', () => {
     it('should generate logout action', () => {
-      let action = {
+      const action = {
         type: 'LOGOUT'
       };
 
       let res = actions.logout();
       expect(res).toEqual(action);
     });
-  });
 
-  describe('auth actions', () => {
     it('should generate login action', () => {
-      let action = {
+      const action = {
         type: 'LOGIN',
         uid: '123'
       };

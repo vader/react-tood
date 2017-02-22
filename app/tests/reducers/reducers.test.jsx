@@ -48,7 +48,7 @@ describe('Reducers', () => {
 
   it('Should update todos', () => {
     let action = {
-      type : 'UPDATE_TODO',
+      type: 'UPDATE_TODO',
       id: '123',
       updates: {
         completed: false,
@@ -80,40 +80,44 @@ describe('Reducers', () => {
       completedAt: undefined,
     }];
     let action = {
-      type : 'ADD_TODOS',
+      type: 'ADD_TODOS',
       todos,
     };
     //
-    let res  = reducers.todosReducer(df([]), df(action));
+    let res = reducers.todosReducer(df([]), df(action));
     expect(res.length).toEqual(1);
     expect(res[0].id).toEqual('123');
     expect(res[0]).toEqual(todos[0]);
 
   });
 
-  it('Should log out',  () => {
-    let auth = {};
-
-    let action = {
-      type: 'LOGOUT'
-    };
-
-    let res = reducers.authReducer(df(''), df(action));
-    expect(res).toEqual(auth);
-  });
-
-  it('Should log in',  () => {
-    let auth = {
+  describe('authReducer', () => {
+    it('Should wipe auth on LOGOUT', () => {
+      let auth = {
         uid: '123'
-    };
+      };
 
-    let action = {
-      type: 'LOGIN',
-      uid: '123'
-    };
+      let action = {
+        type: 'LOGOUT'
+      };
 
-    let res = reducers.authReducer(df('123'), df(action));
-    expect(res).toEqual(auth);
+      let res = reducers.authReducer(df(auth), df(action));
+      expect(res).toEqual({});
+    });
+
+    it('Should store in on LOGIN', () => {
+      let auth = {
+        uid: '123'
+      };
+
+      let action = {
+        type: 'LOGIN',
+        uid: '123'
+      };
+
+      let res = reducers.authReducer(undefined, df(action));
+      expect(res).toEqual(auth);
+    });
   });
 
 });
