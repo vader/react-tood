@@ -34,7 +34,7 @@ export let startAddTodo = (text) => {
       completedAt: null,
     };
     let uid = getState().auth.uid;
-    let todoRef = firebaseRef.child(`user/${uid}/todos`).push(todo);
+    let todoRef = firebaseRef.child(`users/${uid}/todos`).push(todo);
     return todoRef.then(() => {
       dispatch(addTodo({
         ...todo,
@@ -64,7 +64,7 @@ export let startToggleTodo = (id, completed) => {
   //console.log('startToggleTodo');
   return (dispatch, getState) => {
     let uid = getState().auth.uid;
-    var todoRef = firebaseRef.child(`user/${uid}/todos/${id}`);
+    var todoRef = firebaseRef.child(`users/${uid}/todos/${id}`);
     var updates = {
       completed,
       completedAt: completed ? moment().unix() : null,
@@ -81,7 +81,9 @@ export let startAddTodos = () => {
   return (dispatch, getState) => {
     var todos = [];
     let uid = getState().auth.uid;
-    var todosRef = firebaseRef.child(`user/${uid}/todos`);
+    let url = `users/${uid}/todos`;
+    console.log('Fetching todos from', url);
+    var todosRef = firebaseRef.child(url);
     return todosRef.once('value').then((snapshot) => {
       var todos = snapshot.val() || {};
       var parsedTodos = [];
