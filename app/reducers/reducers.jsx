@@ -49,16 +49,13 @@ export let todosReducer = (state = [], action) => {
 };
 
 export let authReducer = (state = {}, action) => {
-  console.log('authReducer', action);
   switch (action.type) {
     case 'LOGIN':
       return {
-        uuid: action.uuid
+        uid: action.uid
       };
     case 'LOGOUT':
-      return {
-        uuid: ''
-      };
+      return {};
     default:
       return state;
   }

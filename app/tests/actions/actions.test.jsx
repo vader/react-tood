@@ -152,10 +152,10 @@ describe('Actions', () => {
     it('should generate login action', () => {
       let action = {
         type: 'LOGIN',
-        uuid: '123'
+        uid: '123'
       };
 
-      let res = actions.login(action.uuid);
+      let res = actions.login(action.uid);
       expect(res).toEqual(action);
     });
   });

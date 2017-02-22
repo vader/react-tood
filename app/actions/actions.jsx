@@ -116,11 +116,10 @@ export let startLogout = () => {
   };
 };
 
-export let login = (uuid) => {
-  console.log('login');
+export let login = (uid) => {
   return {
     type: 'LOGIN',
-    uuid
+    uid
   }
 };
 

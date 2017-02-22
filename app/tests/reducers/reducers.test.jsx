@@ -92,9 +92,7 @@ describe('Reducers', () => {
   });
 
   it('Should log out',  () => {
-    let auth = {
-      uuid: ''
-    };
+    let auth = {};
 
     let action = {
       type: 'LOGOUT'
@@ -106,12 +104,12 @@ describe('Reducers', () => {
 
   it('Should log in',  () => {
     let auth = {
-        uuid: '123'
+        uid: '123'
     };
 
     let action = {
       type: 'LOGIN',
-      uuid: '123'
+      uid: '123'
     };
 
     let res = reducers.authReducer(df('123'), df(action));

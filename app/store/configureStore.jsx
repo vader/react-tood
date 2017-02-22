@@ -11,18 +11,6 @@ export let configure = (initialState = {}) => {
     auth: authReducer,
   });
 
-  // const store = createStore(
-  //   reducer, initialState,
-  //   applyMiddleware(thunk),
-  //   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-
-  //See https://github.com/zalmoxisus/redux-devtools-extension#usage
-  // const store = createStore(
-  //   reducer, initialState,
-  //   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  //   applyMiddleware(thunk) );
-
-
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   const store = createStore(reducer, initialState, composeEnhancers(
     applyMiddleware(thunk)
