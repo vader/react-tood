@@ -91,6 +91,23 @@ describe('Reducers', () => {
 
   });
 
+  it('should remove all todos', () => {
+    let todos = [{
+      id: '123',
+      text: 'Walk cats',
+      completed: false,
+      createdAt: 3000,
+      completedAt: undefined,
+    }];
+    let action = {
+      type: 'LOGOUT'
+    };
+    //
+    let res = reducers.todosReducer(df(todos), df(action));
+    expect(res.length).toEqual(0);
+
+  });
+
   describe('authReducer', () => {
     it('Should wipe auth on LOGOUT', () => {
       let auth = {
@@ -120,4 +137,16 @@ describe('Reducers', () => {
     });
   });
 
+  it('Should clear todos from store on LOGOUT', () => {
+    let auth = {
+      uid: '123'
+    };
+
+    let action = {
+      type: 'LOGOUT'
+    };
+
+    let res = reducers.authReducer(undefined, df(action));
+    expect(res).toEqual({});
+  });
 });
